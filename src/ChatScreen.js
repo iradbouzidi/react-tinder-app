@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import "./ChatScreen.css";
-import { MessageSharp } from "@material-ui/icons";
 
 function ChatScreen() {
   const [input, setInput] = useState([]);
-  const [message, setMessage] = useState([
+  const [messages, setMessages] = useState([
     {
       name: "Irad",
       image:
@@ -25,7 +24,7 @@ function ChatScreen() {
 
   const handleSend = (e) => {
     e.preventDefault();
-    setMessage([...messages, { message: input }]);
+    setMessages([...messages, { message: input }]);
     setInput("");
   };
   return (
@@ -34,7 +33,7 @@ function ChatScreen() {
         You matched with Irad on 11/03/2020
       </p>
 
-      {message.map((message) =>
+      {messages.map((message) =>
         message.name ? (
           <div className="chatScreen__message">
             <Avatar
